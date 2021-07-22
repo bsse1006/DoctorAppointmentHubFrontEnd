@@ -1,0 +1,23 @@
+<app-admin-nav-bar></app-admin-nav-bar>
+<div class="card">
+    <form>
+        <h1 style="text-align: center;">New Doctor Profile</h1>
+            <hr>
+    
+            <label for="name"><b>Name</b></label>
+            <input type="text" [(ngModel)]="doctorName" placeholder="Enter Name" name="name" required>
+    
+            <label for="specialty"><b>Specialty</b></label>
+            <input type="text" [(ngModel)]="doctorSpecialty" placeholder="Enter Specialty" name="specialty" required>
+      
+            <label for="degrees"><b>Degrees</b></label>
+            <input type="text" [(ngModel)]="doctorDegrees" placeholder="Enter Degrees" name="degrees" required>
+      
+            <label for="description"><b>Description</b></label>
+            <input type="text" [(ngModel)]="doctorDescription" placeholder="Enter Description" name="description" required>
+      
+            <div class="clearfix">
+                <button (click)="createDoctor()" class="signupbtn">Create Doctor</button>
+            </div>
+    </form> 
+</div>

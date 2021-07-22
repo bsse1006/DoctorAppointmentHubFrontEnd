@@ -1,0 +1,23 @@
+<app-nav-bar></app-nav-bar>
+<div class="card">
+    <form>
+        <h1 style="text-align: center;">Patient Profile</h1>
+            <hr>
+    
+            <label for="name"><b>Name</b></label>
+            <input type="text" [(ngModel)]="name" placeholder="Enter Name" name="name" required>
+    
+            <label for="username"><b>Username</b></label>
+            <input type="text" [(ngModel)]="username" placeholder="Enter Username" name="username" required>
+      
+            <label for="psw"><b>Password</b></label>
+            <input type="password" [(ngModel)]="password" placeholder="Enter Password" name="psw" required>
+      
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" [(ngModel)]="confirmPassword" placeholder="Repeat Password" name="psw-repeat" required>
+    
+            <div class="clearfix">
+                <button (click)="updateAdmin()" class="signupbtn">Update Profile</button>
+            </div>
+    </form> 
+</div>

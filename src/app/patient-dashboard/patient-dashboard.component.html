@@ -1,0 +1,24 @@
+<app-nav-bar></app-nav-bar>
+<div style="padding: 2%;">
+    <div style="margin: auto; width: 62%;">
+        <form>
+            <input type="text" placeholder="Search doctors..." name="search" (input)="searchDoctors($event)">
+        </form>
+    </div>
+
+    <table style="width:100%">
+        <tr>
+          <th>Doctor Name</th>
+          <th>Specialty</th>
+          <th>Degrees</th>
+          <th>Description</th>
+        </tr>
+        <tr *ngFor="let doctor of searchedDoctors">
+          <td><a [routerLink]="['/patient/doctor', doctor.id]">{{doctor.name}}</a></td>
+          <td>{{doctor.specialty}}</td>
+          <td>{{doctor.degrees}}</td>
+          <td>{{doctor.description}}</td>
+        </tr>
+    </table>
+</div>
+
