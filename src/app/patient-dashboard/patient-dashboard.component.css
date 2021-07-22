@@ -70,3 +70,10 @@ button:hover {
     width: 100%;
   }
 }
+
+.title {
+  color: rgb(194, 181, 181);
+  margin: 13% 13% 13% 13%;
+  font-size: 100px;
+  text-align: center;
+}

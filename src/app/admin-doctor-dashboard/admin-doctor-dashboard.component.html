@@ -19,7 +19,11 @@
           <td>{{doctor.degrees}}</td>
           <td>{{doctor.description}}</td>
         </tr>
-    </table>  
+    </table>
+
+    <div class="title" *ngIf="showEmptyDialogue.length!=0">
+        <label>{{showEmptyDialogue}}</label>
+    </div>
     
     <div class="clearfix">
         <button (click)="addDoctor()" class="signupbtn">Add New Doctor</button>
