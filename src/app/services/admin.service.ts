@@ -59,4 +59,22 @@ export class AdminService {
       params: new HttpParams().set('adminName', username as string)
     });
   }
+
+  public adminSignOut ()
+  {
+    var username = localStorage.getItem("username");
+
+    return this.http.get<any>(this.apiUrl + "/admin/signout", {
+      params: new HttpParams().set('adminName', username as string)
+    });
+  }
+
+  public getOnlineData ()
+  {
+    var username = localStorage.getItem("username");
+
+    return this.http.get<any>(this.apiUrl + "/admin/onlinedata", {
+      params: new HttpParams().set('adminName', username as string)
+    });
+  }
 }

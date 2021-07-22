@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from '../services/admin.service';
 
 @Component({
   selector: 'app-admin-nav-bar',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AdminNavBarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public adminService: AdminService) { }
 
   ngOnInit(): void {
   }
@@ -31,8 +32,11 @@ export class AdminNavBarComponent implements OnInit {
   adminSignOut(): void
   {
     //sign out from backend
-    localStorage.removeItem("username");
-    this.router.navigateByUrl('logIn');
+    this.adminService.adminSignOut().subscribe(
+      response => {
+        localStorage.removeItem("username");
+        this.router.navigateByUrl('logIn');
+      }
+    );
   }
-
 }

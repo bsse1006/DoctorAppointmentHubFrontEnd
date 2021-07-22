@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../services/admin.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  constructor() { }
+  adminName = localStorage.getItem("username");
+
+  onlineData: string[]=[];
+
+  constructor(public adminService: AdminService) { }
 
   ngOnInit(): void {
+    this.adminService.getOnlineData().subscribe(
+      response => {
+        this.onlineData = response;
+      }
+    );
   }
 
 }

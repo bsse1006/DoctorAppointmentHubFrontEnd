@@ -23,7 +23,7 @@ export class AdminAccountManagementComponent implements OnInit {
         this.id = response.id;
         this.username = response.username;
       }
-    )
+    );
   }
 
   updateAdmin(): void

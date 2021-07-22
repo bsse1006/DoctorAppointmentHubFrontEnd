@@ -56,4 +56,13 @@ export class PatientService {
       params: new HttpParams().set('userName', username as string)
     });
   }
+
+  public patientSignOut ()
+  {
+    var username = localStorage.getItem("username");
+
+    return this.http.get<any>(this.apiUrl + "/patient/signout", {
+      params: new HttpParams().set('userName', username as string)
+    });
+  }
 }

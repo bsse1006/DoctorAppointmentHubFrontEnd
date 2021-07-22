@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PatientService } from '../services/patient.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public patientService: PatientService) { }
 
   ngOnInit(): void {
   }
@@ -30,8 +31,11 @@ export class NavBarComponent implements OnInit {
 
   patientSignOut(): void
   {
-    //sign out from backend
-    localStorage.removeItem("username");
-    this.router.navigateByUrl('logIn');
+    this.patientService.patientSignOut().subscribe(
+      response => {
+        localStorage.removeItem("username");
+        this.router.navigateByUrl('logIn');
+      }
+    );
   }
 }
