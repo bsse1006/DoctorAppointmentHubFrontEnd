@@ -26,6 +26,11 @@ export class PatientDashboardComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    if (localStorage.getItem("usertype")!="patient")
+    {
+      this.router.navigateByUrl('logIn');
+    }
+    
     this.doctorService.getAllDoctors().subscribe(
       response => {
         this.doctors = response;

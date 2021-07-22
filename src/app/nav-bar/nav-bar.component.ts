@@ -34,6 +34,7 @@ export class NavBarComponent implements OnInit {
     this.patientService.patientSignOut().subscribe(
       response => {
         localStorage.removeItem("username");
+        localStorage.removeItem("usertype");
         this.router.navigateByUrl('logIn');
       }
     );

@@ -34,12 +34,14 @@ export class SignupPageComponent implements OnInit {
                   if (response)
                   {
                     localStorage.setItem("username", response.email);
+                    localStorage.setItem("usertype", "patient");
                     alert("Your account has been created!");
                     this.router.navigateByUrl('patient/dashboard');
                   }
                   else
                   {
                     alert("Your account has been created!\nPlease log in to continue!");
+                    this.router.navigateByUrl('logIn');
                   }
                 }
               );

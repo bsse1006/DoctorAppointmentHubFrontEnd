@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../services/patient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-account-management',
@@ -8,7 +9,7 @@ import { PatientService } from '../services/patient.service';
 })
 export class PatientAccountManagementComponent implements OnInit {
 
-  constructor(public patientService: PatientService) { }
+  constructor(public patientService: PatientService, private router: Router) { }
 
   id = "";
   name = "";
@@ -18,6 +19,11 @@ export class PatientAccountManagementComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    if (localStorage.getItem("usertype")!="patient")
+    {
+      this.router.navigateByUrl('logIn');
+    }
+
     this.patientService.getPatientByUsername().subscribe(
       response => {
         this.id = response.id;

@@ -18,6 +18,11 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private router: Router, public adminService: AdminService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem("usertype")!="admin")
+    {
+      this.router.navigateByUrl('logIn');
+    }
+    
     this.adminService.getOnlineData().subscribe(
       response => {
         this.onlineData = response;

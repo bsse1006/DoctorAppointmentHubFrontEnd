@@ -66,6 +66,11 @@ export class PatientAppointmentDashboardComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    if (localStorage.getItem("usertype")!="patient")
+    {
+      this.router.navigateByUrl('logIn');
+    }
+    
     this.appointments=[];
     this.appsWithDocs=[];
     this.searchedApps=[];

@@ -28,6 +28,7 @@ export class LoginPageComponent implements OnInit {
           if (response)
           {
             localStorage.setItem("username", response.email);
+            localStorage.setItem("usertype", this.usertype);
             this.router.navigateByUrl('patient/dashboard');
           }
           else
@@ -46,6 +47,7 @@ export class LoginPageComponent implements OnInit {
           {
             console.log(response);
             localStorage.setItem("username", response.username);
+            localStorage.setItem("usertype", this.usertype);
             this.router.navigateByUrl('admin/dashboard');
             //console.log(localStorage.getItem("usertype"));
           }

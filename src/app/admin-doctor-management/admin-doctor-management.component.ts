@@ -20,6 +20,11 @@ export class AdminDoctorManagementComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    if (localStorage.getItem("usertype")!="admin")
+    {
+      this.router.navigateByUrl('logIn');
+    }
+    
     this.doctorId = this.activeRouter.snapshot.paramMap.get('id') as string;
 
     //console.log(this.doctorId);

@@ -18,6 +18,10 @@ export class AdminDoctorNewComponent implements OnInit {
   doctorDescription = "";
 
   ngOnInit(): void {
+    if (localStorage.getItem("usertype")!="admin")
+    {
+      this.router.navigateByUrl('logIn');
+    }
   }
 
   createDoctor(): void

@@ -18,6 +18,10 @@ export class AdminAccountManagementComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    if (localStorage.getItem("usertype")!="admin")
+    {
+      this.router.navigateByUrl('logIn');
+    }
     this.adminService.getAdminByUsername().subscribe(
       response => {
         this.id = response.id;

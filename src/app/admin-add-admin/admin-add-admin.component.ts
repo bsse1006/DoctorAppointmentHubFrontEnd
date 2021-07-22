@@ -16,6 +16,10 @@ export class AdminAddAdminComponent implements OnInit {
   confirmPassword = "";
 
   ngOnInit(): void {
+    if (localStorage.getItem("usertype")!="admin")
+    {
+      this.router.navigateByUrl('logIn');
+    }
   }
 
   createAdmin(): void

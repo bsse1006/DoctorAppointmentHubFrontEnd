@@ -27,6 +27,11 @@ export class PatientDoctorAppointmentComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    if (localStorage.getItem("usertype")!="patient")
+    {
+      this.router.navigateByUrl('logIn');
+    }
+    
     this.doctorId = this.activeRouter.snapshot.paramMap.get('id') as string;
 
     this.doctorService.getDoctorById(this.doctorId).subscribe(

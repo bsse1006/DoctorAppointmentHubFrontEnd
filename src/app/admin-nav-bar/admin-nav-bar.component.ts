@@ -35,6 +35,7 @@ export class AdminNavBarComponent implements OnInit {
     this.adminService.adminSignOut().subscribe(
       response => {
         localStorage.removeItem("username");
+        localStorage.removeItem("usertype");
         this.router.navigateByUrl('logIn');
       }
     );

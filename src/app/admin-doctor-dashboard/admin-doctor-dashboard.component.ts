@@ -21,6 +21,11 @@ export class AdminDoctorDashboardComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    if (localStorage.getItem("usertype")!="admin")
+    {
+      this.router.navigateByUrl('logIn');
+    }
+    
     this.doctorService.getAllDoctors().subscribe(
       response => {
         this.doctors = response;
