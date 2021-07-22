@@ -23,17 +23,10 @@ export class PatientAppointmentDashboardComponent implements OnInit {
 
   searchString = "";
 
-  showEmptyDialogue = "";
-
-  showEmpty(): void
-  {
-    this.showEmptyDialogue = "No appointment found";
-  }
+  showEmptyDialogue = "No appointment found";
 
   searchApps(event: Event): void
   {
-    this.showEmptyDialogue = "";
-
     this.searchString = (event.target as HTMLInputElement).value;
 
     this.searchedApps=[];
@@ -45,11 +38,6 @@ export class PatientAppointmentDashboardComponent implements OnInit {
         this.searchedApps.push(app);
       }
     });
-
-    if(this.searchedApps.length==0)
-    {
-      this.showEmpty();
-    }
   }
 
   loadDoctorPage (doctorId: string)
@@ -78,7 +66,6 @@ export class PatientAppointmentDashboardComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.showEmptyDialogue = "";
     this.appointments=[];
     this.appsWithDocs=[];
     this.searchedApps=[];
@@ -88,11 +75,6 @@ export class PatientAppointmentDashboardComponent implements OnInit {
         this.appointmentService.getAppointmentsByPatientId(this.patientId).subscribe(
           response => {
             this.appointments = response;
-
-            if(this.appointments.length==0)
-            {
-              this.showEmpty();
-            }
 
             this.appointments.forEach(appointment => {
         

@@ -28,7 +28,7 @@
         </tr>
     </table>
 
-    <div class="title">
+    <div class="title" *ngIf="searchedApps.length==0">
         <label>{{showEmptyDialogue}}</label>
     </div>
 </div>

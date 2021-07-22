@@ -17,12 +17,7 @@ export class PatientDashboardComponent implements OnInit {
 
   searchString = "";
 
-  showEmptyDialogue = "";
-
-  showEmpty(): void
-  {
-    this.showEmptyDialogue = "No doctor found";
-  }
+  showEmptyDialogue = "No doctor found";
 
   loadDoctorPage (doctorId: string)
   {
@@ -35,10 +30,6 @@ export class PatientDashboardComponent implements OnInit {
       response => {
         this.doctors = response;
         this.searchedDoctors = response;
-        if(this.searchedDoctors.length==0)
-        {
-          this.showEmpty();
-        }
       }
     )
   }
@@ -49,8 +40,6 @@ export class PatientDashboardComponent implements OnInit {
 
     this.searchedDoctors=[];
 
-    this.showEmptyDialogue="";
-
     this.doctors.forEach(doctor => {
       //if(doctor.name.substring(0,this.searchString.length)==this.searchString)
       if(doctor.name.toLowerCase().includes(this.searchString.toLowerCase()))
@@ -58,11 +47,6 @@ export class PatientDashboardComponent implements OnInit {
         this.searchedDoctors.push(doctor);
       }
     });
-
-    if(this.searchedDoctors.length==0)
-    {
-      this.showEmpty();
-    }
   }
 }
 
