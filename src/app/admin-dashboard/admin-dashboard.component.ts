@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,14 +13,26 @@ export class AdminDashboardComponent implements OnInit {
 
   onlineData: string[]=[];
 
-  constructor(public adminService: AdminService) { }
+  numberOfPatients = "";
+
+  constructor(private router: Router, public adminService: AdminService) { }
 
   ngOnInit(): void {
     this.adminService.getOnlineData().subscribe(
       response => {
         this.onlineData = response;
+        this.numberOfPatients = this.onlineData.length as unknown as string;
       }
     );
   }
 
+  addAdmin(): void
+  {
+    this.router.navigateByUrl('admin/new');
+  }
+
+  addDoctor(): void
+  {
+    this.router.navigateByUrl('admin/doctor/new');
+  }
 }

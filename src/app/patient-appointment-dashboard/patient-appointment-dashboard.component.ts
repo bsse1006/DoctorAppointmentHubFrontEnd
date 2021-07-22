@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '../services/appointment.service';
 import { DoctorService } from '../services/doctor.service';
 import { PatientService } from '../services/patient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-appointment-dashboard',
@@ -11,7 +12,7 @@ import { PatientService } from '../services/patient.service';
 export class PatientAppointmentDashboardComponent implements OnInit {
 
   constructor(public appointmentService: AppointmentService, public patientService: PatientService,
-    public doctorService: DoctorService) { }
+    public doctorService: DoctorService, private router: Router) { }
 
   appointments: Appointment[]=[];
   appsWithDocs: AppointmentWithDoctorDetails[]=[];
@@ -35,6 +36,11 @@ export class PatientAppointmentDashboardComponent implements OnInit {
         this.searchedApps.push(app);
       }
     });
+  }
+
+  loadDoctorPage (doctorId: string)
+  {
+    this.router.navigateByUrl('patient/doctor/' + doctorId);
   }
 
   updateAppointment(id: string, doctorId: string, date: string): void

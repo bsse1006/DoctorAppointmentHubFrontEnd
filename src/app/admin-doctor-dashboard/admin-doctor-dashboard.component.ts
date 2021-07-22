@@ -47,6 +47,11 @@ export class AdminDoctorDashboardComponent implements OnInit {
   {
     this.router.navigateByUrl('admin/doctor/new');
   }
+
+  loadDoctorPage (doctorId: string)
+  {
+    this.router.navigateByUrl('admin/doctor/' + doctorId);
+  }
 }
 
 class Doctor

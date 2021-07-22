@@ -17,6 +17,11 @@ export class PatientDashboardComponent implements OnInit {
 
   searchString = "";
 
+  loadDoctorPage (doctorId: string)
+  {
+    this.router.navigateByUrl('patient/doctor/' + doctorId);
+  }
+
   ngOnInit(): void 
   {
     this.doctorService.getAllDoctors().subscribe(

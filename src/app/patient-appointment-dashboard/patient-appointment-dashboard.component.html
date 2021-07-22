@@ -14,7 +14,7 @@
             <th>Update Appointment</th>
         </tr>
         <tr *ngFor="let appointment of searchedApps">
-            <td><a [routerLink]="['/patient/doctor', appointment.doctorId]">{{appointment.doctorName}}</a></td>
+            <td (click)="loadDoctorPage(appointment.doctorId)" style="cursor: pointer;">{{appointment.doctorName}}</td>
             <td>{{appointment.doctorSpecialty}}</td>
             <td><input type="date" [(ngModel)]="appointment.date" id="date" name="date"></td>
             <td>

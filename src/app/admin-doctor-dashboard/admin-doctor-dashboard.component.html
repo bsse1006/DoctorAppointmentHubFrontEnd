@@ -13,8 +13,8 @@
           <th>Degrees</th>
           <th>Description</th>
         </tr>
-        <tr *ngFor="let doctor of searchedDoctors">
-          <td><a [routerLink]="['/admin/doctor', doctor.id]">{{doctor.name}}</a></td>
+        <tr *ngFor="let doctor of searchedDoctors" (click)="loadDoctorPage(doctor.id)" style="cursor: pointer;">
+          <td>{{doctor.name}}</td>
           <td>{{doctor.specialty}}</td>
           <td>{{doctor.degrees}}</td>
           <td>{{doctor.description}}</td>

@@ -1,4 +1,21 @@
 <app-admin-nav-bar></app-admin-nav-bar>
-<div class="card">
-    <h1 style="text-align: center;">Welcome, {{adminName}}</h1>
+<div class="card" style="text-align: center;">
+    <h1>Welcome, {{adminName}}</h1>
+
+    <div style="padding: 2%;">
+        <h3>Patients Online: {{numberOfPatients}}</h3>
+    </div>
+
+    <div style="padding: 2%;">
+        <h3>List of Patients Online</h3>
+        <hr style="width: 25%;">
+        <h3 *ngFor="let patient of onlineData">{{patient}}</h3>
+    </div>
+    
+    <div style="padding: 2%;">
+        <h3>Quick Links</h3>
+        <hr style="width: 25%;">
+        <button (click)="addDoctor()" class="signupbtn" style="width: 13%; margin: 0% 0.2% 0% 0%;">Add New Doctor</button>
+        <button (click)="addAdmin()" class="signupbtn" style="width: 13%; margin: 0% 0% 0% 0.2%;">Add New Admin</button>
+    </div>
 </div>

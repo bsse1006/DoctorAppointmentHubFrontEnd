@@ -1,19 +1,18 @@
 <app-nav-bar></app-nav-bar>
 <div class="card" style="margin: auto">
     <h1>{{doctorName}}</h1>
-    <p class="title">{{doctorDegrees}}</p>
-    <p><b>{{doctorSpecialty}}</b></p>
+    <h3 class="title">{{doctorDegrees}}</h3>
+    <h3><b>{{doctorSpecialty}}</b></h3>
     <div style="padding: 2%;">
         <p>{{doctorDescription}}</p>
     </div>
 
-    <form style="padding: 5%;">
+    <form style="padding: 4%;">
         <label for="date">Date: </label>
         <input type="date" [(ngModel)]="date" id="date" name="date">
 
         <div style="padding:2%;" class="clearfix">
-            <button  class="signupbtn" (click)="createAppointment()">Take Appointment</button>
+            <button  class="signupbtn" (click)="createAppointment()" style="width: 30%;">Take Appointment</button>
         </div>
     </form>
-      
 </div>
