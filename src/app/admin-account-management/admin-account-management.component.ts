@@ -16,6 +16,8 @@ export class AdminAccountManagementComponent implements OnInit {
   password = "";
   confirmPassword = "";
 
+  admins:Admin[]=[];
+
   ngOnInit(): void 
   {
     if (localStorage.getItem("usertype")!="admin")
@@ -36,11 +38,40 @@ export class AdminAccountManagementComponent implements OnInit {
     {
       if (this.username!=""&&this.password!="")
       {
-        this.adminService.updateAdmin(this.id, this.username, this.password).subscribe(
-          response => {
-            alert("Your profile has been updated!");
-          }
-        );
+        if (this.username!=localStorage.getItem("username") as string)
+        {
+          this.adminService.getAllAdmins().subscribe(
+            response => {
+              this.admins=response;
+  
+              var flag = 0;
+              this.admins.forEach(admin => {
+                if(admin.username==this.username)
+                {
+                  flag = 1;
+                  alert("An admin already exists by this username!");
+                }
+              });
+  
+              if(flag==0)
+              {
+                this.adminService.updateAdmin(this.id, this.username, this.password).subscribe(
+                  response => {
+                    alert("Your profile has been updated!");
+                  }
+                );
+              }
+            }
+          );
+        }
+        else
+        {
+          this.adminService.updateAdmin(this.id, this.username, this.password).subscribe(
+            response => {
+              alert("Your profile has been updated!");
+            }
+          );
+        }
       }
       else
       {
@@ -57,4 +88,10 @@ export class AdminAccountManagementComponent implements OnInit {
   {
     this.router.navigateByUrl('admin/new');
   }
+}
+
+class Admin
+{
+  username = "";
+  password = "";
 }
