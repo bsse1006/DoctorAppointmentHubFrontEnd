@@ -77,4 +77,13 @@ export class AdminService {
       params: new HttpParams().set('adminName', username as string)
     });
   }
+
+  public getAllAdmins ()
+  {
+    var username = localStorage.getItem("username");
+
+    return this.http.get<any>(this.apiUrl + "/admin/getAll", {
+      params: new HttpParams().set('adminName', username as string)
+    });
+  }
 }

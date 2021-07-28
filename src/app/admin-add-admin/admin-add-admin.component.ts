@@ -15,6 +15,8 @@ export class AdminAddAdminComponent implements OnInit {
   password = "";
   confirmPassword = "";
 
+  admins:Admin[]=[];
+
   ngOnInit(): void {
     if (localStorage.getItem("usertype")!="admin")
     {
@@ -28,10 +30,28 @@ export class AdminAddAdminComponent implements OnInit {
     {
       if (this.username!=""&&this.password!="")
       {
-        this.adminService.addAdmin(this.username, this.password).subscribe(
+        this.adminService.getAllAdmins().subscribe(
           response => {
-            alert("Admin " + this.username + " has been added!");
-            this.router.navigateByUrl('admin/account');
+            this.admins=response;
+
+            var flag = 0;
+            this.admins.forEach(admin => {
+              if(admin.username==this.username)
+              {
+                flag = 1;
+                alert("An admin already exists by this username!");
+              }
+            });
+
+            if(flag==0)
+            {
+              this.adminService.addAdmin(this.username, this.password).subscribe(
+                response => {
+                  alert("Admin " + this.username + " has been added!");
+                  this.router.navigateByUrl('admin/account');
+                }
+              );
+            }
           }
         );
       }
@@ -45,4 +65,10 @@ export class AdminAddAdminComponent implements OnInit {
       alert("Passwords did not match!");
     }
   }
+}
+
+class Admin
+{
+  username = "";
+  password = "";
 }
